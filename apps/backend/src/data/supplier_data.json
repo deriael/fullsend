@@ -1,0 +1,6 @@
+[
+  { "partNumber": "VW-GOLF-BRK-1", "name": "Prednji kočioni disk", "brand": "ATE", "b2bPrice": 4800, "stock": 10, "supplier": "Sanel" },
+  { "partNumber": "VW-GOLF-BRK-1", "name": "Prednji kočioni disk", "brand": "Bosch", "b2bPrice": 5200, "stock": 15, "supplier": "Gazela" },
+  { "partNumber": "VW-GOLF-FLT-1", "name": "Filter za ulje", "brand": "Mann", "b2bPrice": 800, "stock": 50, "supplier": "KitCommerce" },
+  { "partNumber": "AUDI-A4-BRK-1", "name": "Prednji kočioni disk", "brand": "ATE", "b2bPrice": 6500, "stock": 8, "supplier": "Sanel" }
+]

@@ -1,0 +1,35 @@
+[
+  {
+    "make": "Volkswagen",
+    "models": [
+      {
+        "name": "Golf",
+        "years": [2018, 2019, 2020],
+        "engines": [
+          { "type": "1.6 TDI", "horsepower": 115 },
+          { "type": "2.0 TDI", "horsepower": 150 }
+        ]
+      },
+      {
+        "name": "Passat",
+        "years": [2019, 2020, 2021],
+        "engines": [
+          { "type": "2.0 TDI", "horsepower": 190 }
+        ]
+      }
+    ]
+  },
+  {
+    "make": "Audi",
+    "models": [
+      {
+        "name": "A4",
+        "years": [2017, 2018],
+        "engines": [
+          { "type": "2.0 TDI", "horsepower": 190 },
+          { "type": "2.0 TFSI", "horsepower": 252 }
+        ]
+      }
+    ]
+  }
+]
