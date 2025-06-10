@@ -1,5 +1,5 @@
 import { Controller, Post, Body, Get } from '@nestjs/common';
-import { OrdersService } from './orders.service';
+import { OrdersService, Order } from './orders.service';
 import { CreateOrderDto } from './dto/create-order.dto';
 
 @Controller('orders')
@@ -8,13 +8,13 @@ export class OrdersController {
 
   // This endpoint handles CREATING a new order from the checkout page
   @Post()
-  create(@Body() createOrderDto: CreateOrderDto) {
+  create(@Body() createOrderDto: CreateOrderDto): Order {
     return this.ordersService.create(createOrderDto);
   }
 
   // This endpoint handles GETTING all orders for the admin panel
   @Get()
-  findAll() {
+  findAll(): Order[] {
     return this.ordersService.findAll();
   }
 }

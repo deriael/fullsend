@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateOrderDto } from './dto/create-order.dto';
 
-interface Order {
+export interface Order {
   id: string;
   createdAt: Date;
   customerName: string;
@@ -15,7 +15,7 @@ interface Order {
 export class OrdersService {
   private orders: Order[] = [];
 
-  async create(createOrderDto: CreateOrderDto) {
+  create(createOrderDto: CreateOrderDto): Order {
     const newOrder: Order = {
       id: (this.orders.length + 1).toString(),
       createdAt: new Date(),
@@ -29,7 +29,7 @@ export class OrdersService {
     return newOrder;
   }
 
-  async findAll() {
+  findAll(): Order[] {
     return this.orders;
   }
 }
