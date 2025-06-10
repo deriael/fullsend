@@ -1,4 +1,3 @@
-// file: apps/frontend/src/lib/prisma.ts
 import { PrismaClient } from '@prisma/client';
 
 // This prevents multiple instances of Prisma Client in development

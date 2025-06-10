@@ -1,4 +1,3 @@
-// file: apps/backend/src/parts/parts.controller.ts
 import { Controller, Get, Query } from '@nestjs/common';
 import { PartsService } from './parts.service';
 import { Part } from '@fullsend/types'; // Import Part type

@@ -1,11 +1,9 @@
-// file: apps/frontend/src/components/VehicleSelector.tsx
 "use client";
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Model, Engine, FinalSelection } from "@fullsend/types";
-
-const API_BASE_URL = "http://localhost:3000";
+import { API_BASE_URL } from "@/lib/config";
 
 interface VehicleSelectorProps {
   onVehicleSelect: (selection: FinalSelection | null) => void;
@@ -42,11 +40,9 @@ export function VehicleSelector({ onVehicleSelect }: VehicleSelectorProps) {
     };
 
     if (selectedMake) {
-      // This is the clean, correct URL that fixes the 404 error
-      const urlToFetch = `${API_BASE_URL}/vehicles/${selectedMake}/models`;
-      console.log(urlToFetch);
+      const url = `${API_BASE_URL}/vehicles/${selectedMake}/models`;
       axios
-        .get(urlToFetch)
+        .get(url)
         .then((response) => {
           resetModels();
           setModels(response.data);

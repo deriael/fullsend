@@ -1,4 +1,3 @@
-// file: apps/backend/src/search/search.controller.ts
 import { Controller, Get, Query } from '@nestjs/common';
 import { SearchService, SearchResult } from './search.service';
 

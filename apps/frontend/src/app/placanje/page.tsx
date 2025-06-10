@@ -1,10 +1,10 @@
-// file: apps/frontend/src/app/placanje/page.tsx
 "use client";
 
 import React, { useState } from "react";
 import { useCartStore } from "@/store/cart.store";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import { API_BASE_URL } from "@/lib/config";
 
 export default function CheckoutPage() {
   const router = useRouter();
@@ -41,11 +41,10 @@ export default function CheckoutPage() {
         customerName,
         address,
         phone,
-        paymentMethod, // Use the selected payment method
+        paymentMethod,
         items: items,
       };
 
-      const API_BASE_URL = "http://localhost:3000";
       const response = await axios.post(`${API_BASE_URL}/orders`, orderPayload);
       const newOrder = response.data;
 
@@ -67,7 +66,6 @@ export default function CheckoutPage() {
           onSubmit={handleSubmit}
           className="space-y-6 bg-gray-800 p-8 rounded-lg border border-gray-700"
         >
-          {/* Customer Details Inputs (no changes here) */}
           <div>
             <label
               htmlFor="customerName"
@@ -117,7 +115,6 @@ export default function CheckoutPage() {
             />
           </div>
 
-          {/* --- NEW PAYMENT METHOD SECTION --- */}
           <div className="border-t border-gray-700 pt-6">
             <h2 className="text-xl font-semibold">Način plaćanja</h2>
             <div className="mt-4 space-y-3">
@@ -148,7 +145,6 @@ export default function CheckoutPage() {
               </label>
             </div>
           </div>
-          {/* ---------------------------------- */}
 
           <div className="border-t border-gray-700 pt-6">
             <h2 className="text-xl font-semibold">Pregled porudžbine</h2>

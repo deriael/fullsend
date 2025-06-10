@@ -1,31 +1,35 @@
-// file: apps/backend/src/orders/orders.service.ts
 import { Injectable } from '@nestjs/common';
 import { CreateOrderDto } from './dto/create-order.dto';
-import { PrismaService } from '../prisma.service';
+
+interface Order {
+  id: string;
+  createdAt: Date;
+  customerName: string;
+  address: string;
+  phone: string;
+  paymentMethod: string;
+  itemsJson: string;
+}
 
 @Injectable()
 export class OrdersService {
-  constructor(private prisma: PrismaService) {}
+  private orders: Order[] = [];
 
   async create(createOrderDto: CreateOrderDto) {
-    const newOrder = await this.prisma.order.create({
-      data: {
-        customerName: createOrderDto.customerName,
-        address: createOrderDto.address,
-        phone: createOrderDto.phone,
-        paymentMethod: createOrderDto.paymentMethod,
-        itemsJson: JSON.stringify(createOrderDto.items),
-      },
-    });
-
+    const newOrder: Order = {
+      id: (this.orders.length + 1).toString(),
+      createdAt: new Date(),
+      customerName: createOrderDto.customerName,
+      address: createOrderDto.address,
+      phone: createOrderDto.phone,
+      paymentMethod: createOrderDto.paymentMethod,
+      itemsJson: JSON.stringify(createOrderDto.items),
+    };
+    this.orders.unshift(newOrder);
     return newOrder;
   }
 
   async findAll() {
-    return this.prisma.order.findMany({
-      orderBy: {
-        createdAt: 'desc',
-      },
-    });
+    return this.orders;
   }
 }

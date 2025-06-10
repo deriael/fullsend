@@ -31,7 +31,6 @@ model SavedVehicle {
 
 // --- Standard models required by NextAuth.js ---
 
-// This is the new, corrected version
 model Account {
   id                 String  @id @default(cuid())
   userId             String

@@ -1,4 +1,3 @@
-// file: apps/backend/src/orders/orders.controller.ts
 import { Controller, Post, Body, Get } from '@nestjs/common';
 import { OrdersService } from './orders.service';
 import { CreateOrderDto } from './dto/create-order.dto';

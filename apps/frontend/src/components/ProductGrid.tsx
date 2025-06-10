@@ -1,12 +1,10 @@
-// file: apps/frontend/src/components/ProductGrid.tsx
 "use client";
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { ProductCard } from "./ProductCard";
 import { Part, FinalSelection } from "@fullsend/types";
-
-const API_BASE_URL = "http://localhost:3000";
+import { API_BASE_URL } from "@/lib/config";
 
 export function ProductGrid({
   selection,
@@ -18,19 +16,17 @@ export function ProductGrid({
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Only fetch parts if we have a complete selection object
+    // Only fetch parts if we have a complete selection
     if (selection) {
       setIsLoading(true);
       setError(null);
 
-      // This creates the `params` variable
       const params = new URLSearchParams({
         model: selection.model,
         year: selection.year,
         engine: selection.engine,
       });
 
-      // This line now correctly uses both 'API_BASE_URL' and 'params'
       axios
         .get(`${API_BASE_URL}/parts?${params.toString()}`)
         .then((response) => {
@@ -39,10 +35,10 @@ export function ProductGrid({
         .catch((err) => {
           console.error("Failed to fetch parts:", err);
           setError("Došlo je do greške prilikom preuzimanja delova.");
-          setParts([]); // Clear parts on error
+          setParts([]);
         })
         .finally(() => {
-          setIsLoading(false); // Always stop loading
+          setIsLoading(false);
         });
     } else {
       // If the selection is cleared, empty the parts list

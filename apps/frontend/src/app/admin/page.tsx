@@ -1,9 +1,9 @@
-// file: apps/frontend/src/app/admin/page.tsx
 "use client";
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { CartItem } from "@/store/cart.store";
+import { API_BASE_URL } from "@/lib/config";
 
 // Define the shape of an Order object
 interface Order {
@@ -28,7 +28,7 @@ export default function AdminPage() {
     // Only fetch orders if the user is authenticated
     if (isAuthenticated) {
       axios
-        .get("http://localhost:3000/orders")
+        .get(`${API_BASE_URL}/orders`)
         .then((response) => {
           setOrders(response.data);
         })

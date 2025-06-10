@@ -1,4 +1,3 @@
-// file: apps/frontend/src/store/cart.store.ts
 import { create } from "zustand";
 import { Part } from "@fullsend/types";
 

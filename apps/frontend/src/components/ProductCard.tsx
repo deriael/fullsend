@@ -1,4 +1,3 @@
-// file: apps/frontend/src/components/ProductCard.tsx
 "use client";
 import React from "react";
 import Image from "next/image";
