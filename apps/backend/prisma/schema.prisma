@@ -16,3 +16,64 @@ model Order {
   paymentMethod String
   itemsJson     String
 }
+
+// Our custom model for storing a user's saved vehicles
+model SavedVehicle {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  make        String
+  model       String
+  year        Int
+  engine      String
+  createdAt   DateTime @default(now())
+}
+
+// --- Standard models required by NextAuth.js ---
+
+// This is the new, corrected version
+model Account {
+  id                 String  @id @default(cuid())
+  userId             String
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String? // @db.Text REMOVED
+  access_token       String? // @db.Text REMOVED
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String? // @db.Text REMOVED
+  session_state      String?
+  user               User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  password      String?   // For storing the hashed password
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  savedVehicles SavedVehicle[] // Relation to saved vehicles
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
