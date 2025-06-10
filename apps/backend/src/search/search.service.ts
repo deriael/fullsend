@@ -1,4 +1,3 @@
-// file: apps/backend/src/search/search.service.ts
 import { Injectable } from '@nestjs/common';
 import * as supplierDataJson from '../data/supplier_data.json';
 

@@ -1,10 +1,10 @@
-// file: apps/frontend/src/components/SmartSearchBar.tsx
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
+import { API_BASE_URL } from '@/lib/config';
 
 interface SearchResult {
   partNumber: string;
@@ -25,7 +25,8 @@ export function SmartSearchBar() {
     }
     setIsLoading(true);
     const debounceTimer = setTimeout(() => {
-      axios.get(`http://localhost:3000/search?q=${query}`)
+      axios
+        .get(`${API_BASE_URL}/search?q=${query}`)
         .then(response => {
           setResults(response.data);
         })
@@ -67,8 +68,8 @@ export function SmartSearchBar() {
             <p className="p-4 text-gray-400">Nema rezultata za &quot;{query}&quot;</p>
           )}
           {!isLoading && results.map((part) => (
-            <Link 
-              key={`${part.partNumber}-${part.brand}`} // This is the corrected line
+            <Link
+              key={`${part.partNumber}-${part.brand}`}
               href={`/deo/${part.partNumber}`} 
               className="block p-4 hover:bg-black/30 border-b border-white/10 last:border-b-0"
               onClick={() => { setQuery(''); setResults([]); }}

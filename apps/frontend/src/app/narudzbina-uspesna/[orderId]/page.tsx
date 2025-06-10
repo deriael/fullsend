@@ -1,4 +1,3 @@
-// file: apps/frontend/src/app/narudzbina-uspesna/[orderId]/page.tsx
 "use client";
 
 import Link from "next/link";

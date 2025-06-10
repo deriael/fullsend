@@ -1,4 +1,3 @@
-// file: apps/frontend/src/app/korpa/page.tsx
 "use client";
 
 import React from "react";

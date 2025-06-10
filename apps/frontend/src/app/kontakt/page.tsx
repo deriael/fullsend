@@ -1,4 +1,3 @@
-// file: apps/frontend/src/app/kontakt/page.tsx
 import { Metadata } from "next";
 import React from "react";
 

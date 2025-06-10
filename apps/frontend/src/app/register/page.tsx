@@ -21,7 +21,7 @@ export default function RegisterPage() {
     try {
       await axios.post('/api/register', { name, email, password });
       router.push('/login');
-    } catch (err: unknown) { // This is the corrected block
+    } catch (err: unknown) {
       console.error(err);
       if (axios.isAxiosError(err) && err.response) {
         setError(err.response.data || "Došlo je do greške prilikom registracije.");

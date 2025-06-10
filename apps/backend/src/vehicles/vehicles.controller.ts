@@ -1,4 +1,3 @@
-// file: apps/backend/src/vehicles/vehicles.controller.ts
 import { Controller, Get, Param } from '@nestjs/common';
 import { VehiclesService } from './vehicles.service';
 import { Model } from '@fullsend/types'; // Import Model type

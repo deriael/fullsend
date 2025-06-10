@@ -41,7 +41,6 @@ export function Header() {
             </div>
           </Link>
 
-          {/* This is the corrected conditional block */}
           {status === 'authenticated' ? (
             <div className="flex items-center gap-4 text-brand-white">
               <span className="text-gray-300 font-medium">Zdravo, {session.user?.name}</span>

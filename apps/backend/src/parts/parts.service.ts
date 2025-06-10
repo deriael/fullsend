@@ -1,4 +1,3 @@
-// file: apps/backend/src/parts/parts.service.ts
 import { Injectable } from '@nestjs/common';
 import { Part } from '@fullsend/types';
 import * as supplierDataJson from '../data/supplier_data.json';
@@ -25,7 +24,6 @@ export class PartsService {
   private readonly MARKUP = 1.35;
 
   findAll(query: FindPartsQuery): Part[] {
-    console.log('Searching for parts with query:', query);
 
     let compatiblePartNumbers: string[] = [];
     if (query.model.toLowerCase() === 'golf') {
@@ -42,7 +40,7 @@ export class PartsService {
       (supplierPart, index) => {
         const finalPrice = supplierPart.b2bPrice * this.MARKUP;
         return {
-          id: `<span class="math-inline">{supplierPart.supplier}-</span>{supplierPart.partNumber}-${index}`, // Corrected line
+          id: `${supplierPart.supplier}-${supplierPart.partNumber}-${index}`,
           partNumber: supplierPart.partNumber,
           name: supplierPart.name,
           brand: supplierPart.brand,

@@ -1,4 +1,3 @@
-// file: apps/frontend/src/app/o-nama/page.tsx
 import { Metadata } from "next";
 import React from "react";
 

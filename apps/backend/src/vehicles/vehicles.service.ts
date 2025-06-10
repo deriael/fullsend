@@ -1,4 +1,3 @@
-// file: apps/backend/src/vehicles/vehicles.service.ts
 import { Injectable } from '@nestjs/common';
 import { Vehicle, Model } from '@fullsend/types';
 import * as vehiclesDataJson from '../data/vehicles.json';
